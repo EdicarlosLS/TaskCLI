@@ -32,7 +32,7 @@ public class Main{
 		}
 	}
 
-	private static void tryThis(){
+	privat static void tryThis(){
 	System.out.println("Invalid Action. Try this: \n");
 
 			for (Action action : map.values()) {
