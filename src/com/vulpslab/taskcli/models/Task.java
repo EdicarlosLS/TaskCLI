@@ -11,6 +11,16 @@ public class Task{
 	private Date createdAt;
 	private Date updatedAt;
 
+	public Task(){}
+
+	public Task(String description){
+		this.setId(0);
+		this.setDescription(description);
+		this.setStatus(Status.todo);
+		this.setCreatedAt(new Date());
+		this.setUpdatedAt(new Date());
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -29,6 +39,15 @@ public class Task{
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public void setStatus(String status){
+		for (Status s : Status.values()) {
+			if(s.toString().equalsIgnoreCase(status)){
+				this.status = s;
+				break;
+			}
+		}
 	}
 
 	public Status getStatus() {

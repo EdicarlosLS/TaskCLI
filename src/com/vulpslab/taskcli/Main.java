@@ -25,15 +25,15 @@ public class Main{
 				tryThis();
 			} else{
 				Msg returnedMessage = action.run(args);
-				System.out.println(returnedMessage.getMessage());
+				System.out.println("# " + returnedMessage.getMessage());
 			}
 		} else {
 			tryThis();
 		}
 	}
 
-	privat static void tryThis(){
-	System.out.println("Invalid Action. Try this: \n");
+	private static void tryThis(){
+	System.out.println("# Invalid Action. Try this: \n");
 
 			for (Action action : map.values()) {
 				System.out.println("\t" + action.getArgsExample());
