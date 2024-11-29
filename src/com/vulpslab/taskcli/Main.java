@@ -2,6 +2,7 @@ package com.vulpslab.taskcli;
 
 import com.vulpslab.taskcli.actions.Action;
 import com.vulpslab.taskcli.actions.AddAction;
+import com.vulpslab.taskcli.actions.UpdateAction;
 import com.vulpslab.taskcli.util.Msg;
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class Main{
 
 	public static void main(String[] args) {
 		putAction(new AddAction());
+		putAction(new UpdateAction());
 
 		if(args.length > 0){
 		

@@ -49,15 +49,22 @@ public class TxtTaskDao implements TaskDao{
 	public long create(Task task) {
 		task.setId(lastInsertId + 1);
 		tasks.add(task);
+			
+		writeTasksList();
 
-		for (Task t : tasks) {
-			out.println(encode(t));
-		}
 		return task.getId();
 	}
 
 	@Override
 	public void update(Task task){
+		for(Task t : tasks){
+			if(t.getId() == task.getId()){
+				t.setDescription(task.getDescription());
+				break;
+			}
+		}
+		
+		writeTasksList();
 	}
 
 	@Override
@@ -67,6 +74,12 @@ public class TxtTaskDao implements TaskDao{
 
 	@Override
 	public Task findById(long id) {
+		for(Task t : tasks){
+			if(t.getId() == id){
+				return t;
+			}
+		}
+		writeTasksList();
 			return null;
 	}
 
@@ -117,6 +130,12 @@ public class TxtTaskDao implements TaskDao{
 				lastInsertId = t.getId();
 			}
 			tasks.add(t);
+		}
+	}
+
+	private void writeTasksList(){
+		for (Task t : tasks) {
+			out.println(encode(t));
 		}
 	}
 } 

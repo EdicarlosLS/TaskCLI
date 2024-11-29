@@ -1,6 +1,9 @@
 package com.vulpslab.taskcli.services;
 
 import com.vulpslab.taskcli.daos.TxtTaskDao;
+
+import java.util.Date;
+
 import com.vulpslab.taskcli.daos.TaskDao;
 import com.vulpslab.taskcli.models.Task;
 
@@ -15,8 +18,15 @@ public class TaskService {
 		if(task.getId() < 1){
 			return dao.create(task);
 		} else {
-			dao.update(task);
-			return task.getId();
+			Task t = dao.findById(task.getId());
+			if(t != null){
+				t.setDescription(task.getDescription());
+				t.setUpdatedAt(new Date());
+				dao.update(t);
+				return task.getId();
+			} else {
+				return -1;
+			}
 		}
 	}
 
