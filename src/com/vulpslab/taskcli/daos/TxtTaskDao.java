@@ -69,7 +69,15 @@ public class TxtTaskDao implements TaskDao{
 
 	@Override
 	public void delete(long id) {
-			
+		Task TaskToRemove = null;
+		for (Task task : tasks) {
+			if(task.getId() == id){
+				TaskToRemove = task;
+				break;
+			}	
+		}
+		tasks.remove(TaskToRemove);
+		writeTasksList();
 	}
 
 	@Override

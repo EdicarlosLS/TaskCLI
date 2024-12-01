@@ -30,4 +30,15 @@ public class TaskService {
 		}
 	}
 
+	public boolean delete(long id) {
+		Task t = dao.findById(id);
+		if(t == null){
+			return false;
+		} else {
+			dao.delete(id);
+			return true;
+		}
+	}
+	
+
 }
