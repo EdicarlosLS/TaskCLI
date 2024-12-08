@@ -54,4 +54,19 @@ public class TaskService {
 			return new Msg(Msg.Type.SUCCESS, "Task marked successfully (ID: "  + t.getId() + ")");
 		}
 	}
+		
+	public Msg markDone(Task task){
+		Task t = dao.findById(task.getId());
+		if(t == null){
+			return new Msg(Msg.Type.ERROR, "Task not found");
+		} else if(!t.getStatus().equals(Task.Status.inprogress)) {
+			return new Msg(Msg.Type.ERROR, "Task must be in 'in-progress' status");
+		} else {
+			t.setStatus(Task.Status.done);
+			t.setUpdatedAt(new Date());
+			dao.update(t);
+			return new Msg(Msg.Type.SUCCESS, "Task marked successfully (ID: "  + t.getId() + ")");
+		}
+	}
+
 }
