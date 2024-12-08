@@ -4,6 +4,7 @@ import com.vulpslab.taskcli.actions.Action;
 import com.vulpslab.taskcli.actions.AddAction;
 import com.vulpslab.taskcli.actions.DeleteAction;
 import com.vulpslab.taskcli.actions.UpdateAction;
+import com.vulpslab.taskcli.actions.MarkInProgressAction;
 import com.vulpslab.taskcli.util.Msg;
 
 import java.util.HashMap;
@@ -19,6 +20,7 @@ public class Main{
 		putAction(new AddAction());
 		putAction(new UpdateAction());
 		putAction(new DeleteAction());
+		putAction(new MarkInProgressAction());
 
 		if(args.length > 0){
 		

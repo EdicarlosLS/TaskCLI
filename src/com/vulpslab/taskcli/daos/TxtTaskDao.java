@@ -82,13 +82,15 @@ public class TxtTaskDao implements TaskDao{
 
 	@Override
 	public Task findById(long id) {
+		Task taskToRetutn = null;
 		for(Task t : tasks){
 			if(t.getId() == id){
-				return t;
+				taskToRetutn = t;
+				break;
 			}
 		}
 		writeTasksList();
-			return null;
+		return taskToRetutn;
 	}
 
 	@Override
@@ -142,8 +144,14 @@ public class TxtTaskDao implements TaskDao{
 	}
 
 	private void writeTasksList(){
-		for (Task t : tasks) {
-			out.println(encode(t));
+		try {
+			out = new PrintStream(file);
+		
+			for (Task t : tasks) {
+				out.println(encode(t));
+			}
+		} catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 } 

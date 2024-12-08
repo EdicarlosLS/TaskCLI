@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.vulpslab.taskcli.daos.TaskDao;
 import com.vulpslab.taskcli.models.Task;
+import com.vulpslab.taskcli.util.Msg;
 
 public class TaskService {
 	private TaskDao dao;
@@ -40,5 +41,17 @@ public class TaskService {
 		}
 	}
 	
-
+	public Msg markInProgress(Task task){
+		Task t = dao.findById(task.getId());
+		if(t == null){
+			return new Msg(Msg.Type.ERROR, "Task not found");
+		} else if(!t.getStatus().equals(Task.Status.todo)) {
+			return new Msg(Msg.Type.ERROR, "Task must be in 'todo' status");
+		} else {
+			t.setStatus(Task.Status.inprogress);
+			t.setUpdatedAt(new Date());
+			dao.update(t);
+			return new Msg(Msg.Type.SUCCESS, "Task marked successfully (ID: "  + t.getId() + ")");
+		}
+	}
 }
