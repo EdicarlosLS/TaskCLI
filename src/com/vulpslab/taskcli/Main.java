@@ -3,6 +3,7 @@ package com.vulpslab.taskcli;
 import com.vulpslab.taskcli.actions.Action;
 import com.vulpslab.taskcli.actions.AddAction;
 import com.vulpslab.taskcli.actions.DeleteAction;
+import com.vulpslab.taskcli.actions.ListAction;
 import com.vulpslab.taskcli.actions.MarkDoneAction;
 import com.vulpslab.taskcli.actions.UpdateAction;
 import com.vulpslab.taskcli.actions.MarkInProgressAction;
@@ -23,6 +24,7 @@ public class Main{
 		putAction(new DeleteAction());
 		putAction(new MarkInProgressAction());
 		putAction(new MarkDoneAction());
+		putAction(new ListAction());
 
 		if(args.length > 0){
 		

@@ -2,7 +2,9 @@ package com.vulpslab.taskcli.services;
 
 import com.vulpslab.taskcli.daos.TxtTaskDao;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.vulpslab.taskcli.daos.TaskDao;
 import com.vulpslab.taskcli.models.Task;
@@ -69,4 +71,19 @@ public class TaskService {
 		}
 	}
 
+	public List<Task> listByStatus(String status){
+		List<Task> tasks = dao.findAll();
+		List<Task> tks = new ArrayList <>();
+		for(Task t : tasks){
+			if(t.getStatus().toString().equals(status)){
+				tks.add(t);
+			}
+		}
+		return tks;
+	} 
+
+	public List<Task> list(){
+		List<Task> tasks = dao.findAll();
+		return tasks;
+	} 
 }

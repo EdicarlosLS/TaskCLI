@@ -95,7 +95,8 @@ public class TxtTaskDao implements TaskDao{
 
 	@Override
 	public List<Task> findAll() {
-			return null;
+		writeTasksList();	
+		return tasks;
 	}
 
 	private String encode(Task task){
