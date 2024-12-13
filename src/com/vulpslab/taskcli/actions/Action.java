@@ -10,4 +10,10 @@ public abstract class Action{
 	public String getName(){
 		return this.name;
 	}
+
+	@FunctionalInterface
+	protected interface Validator{
+		
+		public abstract Msg validate(String[] args);
+	}
 } 

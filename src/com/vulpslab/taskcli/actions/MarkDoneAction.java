@@ -59,9 +59,4 @@ public class MarkDoneAction extends Action{
 		return new TaskService().markDone(t);
 	}
 
-	@FunctionalInterface
-	private interface Validator{
-		
-		public abstract Msg validate(String[] args);
-	}
 } 

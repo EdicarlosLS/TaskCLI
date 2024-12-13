@@ -80,9 +80,4 @@ public class ListAction extends Action{
 		return sb.toString();
 	}
 
-	@FunctionalInterface
-	private interface Validator{
-		
-		public abstract Msg validate(String[] args);
-	}
 } 

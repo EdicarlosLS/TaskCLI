@@ -59,9 +59,4 @@ public class MarkInProgressAction extends Action{
 		return new TaskService().markInProgress(t);
 	}
 
-	@FunctionalInterface
-	private interface Validator{
-		
-		public abstract Msg validate(String[] args);
-	}
 } 

@@ -63,9 +63,4 @@ public class DeleteAction extends Action{
 		return new Msg(Msg.Type.SUCCESS, "Task deleted (ID: "  + id + ")");
 	}
 
-	@FunctionalInterface
-	private interface Validator{
-		
-		public abstract Msg validate(String[] args);
-	}
 } 

@@ -14,7 +14,7 @@ public class UpdateAction extends Action{
 	public UpdateAction(){
 		this.name = "update";
 		validators = new ArrayList<>();
-		
+	
 		Validator numberArgsValidator = (args) -> {
 				if(args.length != 3){
 					return new Msg(Msg.Type.ERROR, "Invalid args numbers");
@@ -72,9 +72,4 @@ public class UpdateAction extends Action{
 		return new Msg(Msg.Type.SUCCESS, "Task updatded successfully (ID: "  + t.getId() + ")");
 	}
 
-	@FunctionalInterface
-	private interface Validator{
-		
-		public abstract Msg validate(String[] args);
-	}
 } 
